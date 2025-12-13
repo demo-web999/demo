@@ -384,106 +384,6 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
   .tile { border-radius: 8px; }
 }
 
-/* Notification Modal */
-.notification-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  animation: fadeIn 0.3s ease;
-}
-
-.notification-modal.active {
-  display: flex;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.notification-content {
-  position: relative;
-  max-width: 90%;
-  max-height: 90vh;
-  background: #fff;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  animation: slideUp 0.3s ease;
-  width: 100%;
-}
-
-@media (max-width: 680px) {
-  .notification-modal {
-    padding: 10px;
-  }
-  .notification-content {
-    max-width: 100%;
-    max-height: 95vh;
-    border-radius: 12px;
-  }
-  .notification-close {
-    width: 40px;
-    height: 40px;
-    top: 8px;
-    right: 8px;
-    font-size: 24px;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.notification-content img {
-  width: 100%;
-  height: auto;
-  display: block;
-  max-height: 90vh;
-  object-fit: contain;
-}
-
-.notification-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease, transform 0.2s ease;
-  z-index: 10;
-}
-
-.notification-close:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: scale(1.1);
-}
-
-.notification-close:active {
-  transform: scale(0.95);
-}
-
 /* Welcome Toast Notification */
 .welcome-toast {
   position: fixed;
@@ -582,14 +482,6 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
             </nav>
         </div>
     </header>
-
-    <!-- Notification Modal -->
-    <div id="notificationModal" class="notification-modal">
-      <div class="notification-content">
-        <button class="notification-close" aria-label="Close notification" onclick="closeNotification()">×</button>
-        <img src="thongbao.jpg" alt="Thông báo">
-      </div>
-    </div>
 
     <!-- Welcome Toast Notification -->
     <div id="welcomeToast" class="welcome-toast">
@@ -879,46 +771,6 @@ const ioNav = new IntersectionObserver((entries) => {
   entries.forEach(e => { if (e.isIntersecting) setActiveLinkByHash('#'+e.target.id); });
 }, {threshold: 0.55});
 sections.forEach(sec => ioNav.observe(sec));
-
-// Notification Modal
-function showNotification() {
-  const modal = document.getElementById('notificationModal');
-  if (modal) {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-  }
-}
-
-function closeNotification() {
-  const modal = document.getElementById('notificationModal');
-  if (modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
-  }
-}
-
-// Show notification on every page load
-window.addEventListener('load', () => {
-  // Small delay for better UX
-  setTimeout(showNotification, 300);
-});
-
-// Close modal when clicking outside
-document.getElementById('notificationModal')?.addEventListener('click', (e) => {
-  if (e.target.id === 'notificationModal') {
-    closeNotification();
-  }
-});
-
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const modal = document.getElementById('notificationModal');
-    if (modal && modal.classList.contains('active')) {
-      closeNotification();
-    }
-  }
-});
 
 // Welcome Toast Notification
 function showWelcomeToast() {
