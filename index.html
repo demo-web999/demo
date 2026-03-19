@@ -385,110 +385,6 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
 }
 
 /* Notification Modal */
-.notification-modal {
-  display: none;
-  position: fixed;
-  inset: 0;
-  z-index: 10000;
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(4px);
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  animation: fadeIn 0.3s ease;
-}
-
-.notification-modal.active {
-  display: flex;
-}
-
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.notification-content {
-  position: relative;
-  max-width: 90vw;
-  max-height: 90vh;
-  background: transparent;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-  overflow: visible;
-  animation: slideUp 0.3s ease;
-  display: inline-block;
-}
-
-@media (max-width: 680px) {
-  .notification-modal {
-    padding: 10px;
-  }
-  .notification-content {
-    max-width: 95vw;
-    max-height: 95vh;
-  }
-  .notification-content img {
-    max-width: 95vw;
-    max-height: 95vh;
-    border-radius: 12px;
-  }
-  .notification-close {
-    width: 40px;
-    height: 40px;
-    top: 8px;
-    right: 8px;
-    font-size: 24px;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(30px);
-    opacity: 0;
-  }
-  to {
-    transform: translateY(0);
-    opacity: 1;
-  }
-}
-
-.notification-content img {
-  width: auto;
-  height: auto;
-  max-width: 90vw;
-  max-height: 90vh;
-  display: block;
-  border-radius: 16px;
-  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-}
-
-.notification-close {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 36px;
-  height: 36px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  border: none;
-  border-radius: 50%;
-  cursor: pointer;
-  font-size: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s ease, transform 0.2s ease;
-  z-index: 10;
-}
-
-.notification-close:hover {
-  background: rgba(0, 0, 0, 0.8);
-  transform: scale(1.1);
-}
-
-.notification-close:active {
-  transform: scale(0.95);
-}
 
 /* Welcome Toast Notification */
 .welcome-toast {
@@ -589,14 +485,6 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
         </div>
     </header>
 
-    <!-- Notification Modal -->
-    <div id="notificationModal" class="notification-modal">
-      <div class="notification-content">
-        <button class="notification-close" aria-label="Close notification" onclick="closeNotification()">×</button>
-        <img src="thongbaonoel.jpg" alt="Thông báo">
-      </div>
-    </div>
-
     <!-- Welcome Toast Notification -->
     <div id="welcomeToast" class="welcome-toast">
       <span>Welcome to 5 STAR NAIL BAR</span>
@@ -621,8 +509,8 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
             <h2 class="section-title">About Us</h2>
             <img src="logo.jpg" alt="Showcase image" class="about-photo">
             <div style="color: var(--muted); max-width: 920px; margin: 0 auto; line-height: 1.7;">
-                <p>Pamper yourself with a deluxe nail care experience at 5 Star Nail Bar in Apopka, FL 32703. We’re dedicated to enhancing your beauty and providing a truly luxurious experience.</p>
-                <p><strong>Nail Designs:</strong> Nothing completes your look better than a fresh set of flawless nails. We offer an extensive selection of designs and hundreds of colors, from the simplest to the most intricate. Whatever your style, we’ve got you covered.</p>
+                <p>Pamper yourself with a deluxe nail care experience at 5 Star Nail Bar in Apopka, FL 32703. We're dedicated to enhancing your beauty and providing a truly luxurious experience.</p>
+                <p><strong>Nail Designs:</strong> Nothing completes your look better than a fresh set of flawless nails. We offer an extensive selection of designs and hundreds of colors, from the simplest to the most intricate. Whatever your style, we've got you covered.</p>
                 <p><strong>Facilities:</strong> We take pride in providing a space to escape the busy world. Our calming decor helps you relax and unwind while our therapists perfect your nails. Sink into our cushy couches and pretty pillows for ultimate comfort.</p>
                 <p><strong>Punctuality:</strong> We value your time. Our meticulous approach and commitment to punctuality ensure exceptional service that surpasses your expectations.</p>
                 <p>Visit 5 Star Nail Bar us at 621 E Main St, Apopka, FL 32703 and enjoy your moment of relaxation and beauty. Book your appointment today and discover the difference at 5 Star Nail Bar!</p>
@@ -656,7 +544,7 @@ input:focus, select:focus, textarea:focus { outline: none; border-color: var(--g
                     <div class="promo-copy">
                         <span class="badge">EVENT & PROMO</span>
                         <h3>Gift Certificates Available!</h3>
-                        <p>We’re pleased to say we are the <strong>NEW OWNER of image.png</strong>, with more passion for nails and extra dedication for our customers. Don’t miss out the hot promo! Visit us and get yourself pampered from tip to toe.</p>
+                        <p>We're pleased to say we are the <strong>NEW OWNER of image.png</strong>, with more passion for nails and extra dedication for our customers. Don't miss out the hot promo! Visit us and get yourself pampered from tip to toe.</p>
                         <div class="promo-actions">
                             <a class="btn btn-primary" href="https://abcapp.us/feedback/appointment?appid=v1vGJAi" target="_blank" rel="noopener noreferrer">Book now</a>
                             <a class="btn btn-outline" href="tel:+14077032373">Call (407) 703-2373</a>
@@ -886,46 +774,6 @@ const ioNav = new IntersectionObserver((entries) => {
 }, {threshold: 0.55});
 sections.forEach(sec => ioNav.observe(sec));
 
-// Notification Modal
-function showNotification() {
-  const modal = document.getElementById('notificationModal');
-  if (modal) {
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
-  }
-}
-
-function closeNotification() {
-  const modal = document.getElementById('notificationModal');
-  if (modal) {
-    modal.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
-  }
-}
-
-// Show notification on every page load
-window.addEventListener('load', () => {
-  // Small delay for better UX
-  setTimeout(showNotification, 300);
-});
-
-// Close modal when clicking outside
-document.getElementById('notificationModal')?.addEventListener('click', (e) => {
-  if (e.target.id === 'notificationModal') {
-    closeNotification();
-  }
-});
-
-// Close modal with Escape key
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    const modal = document.getElementById('notificationModal');
-    if (modal && modal.classList.contains('active')) {
-      closeNotification();
-    }
-  }
-});
-
 // Welcome Toast Notification
 function showWelcomeToast() {
   const toast = document.getElementById('welcomeToast');
@@ -954,5 +802,8 @@ window.addEventListener('load', () => {
     </script>
 </body>
 </html>
+
+
+
 
 
